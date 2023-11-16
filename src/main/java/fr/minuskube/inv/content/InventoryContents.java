@@ -15,6 +15,7 @@ import java.util.UUID;
 public interface InventoryContents {
 
     SmartInventory inventory();
+    Player player();
     Pagination pagination();
 
     Optional<SlotIterator> iterator(String id);
@@ -70,6 +71,11 @@ public interface InventoryContents {
 
         @Override
         public SmartInventory inventory() { return inv; }
+
+        @Override
+        public Player player() {
+            return Bukkit.getPlayer(this.player);
+        }
 
         @Override
         public Pagination pagination() { return pagination; }
