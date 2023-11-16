@@ -54,14 +54,14 @@ public interface InventoryContents {
 
     class Impl implements InventoryContents {
 
-        private SmartInventory inv;
-        private UUID player;
+        private final SmartInventory inv;
+        private final UUID player;
 
-        private ClickableItem[][] contents;
+        private final ClickableItem[][] contents;
 
-        private Pagination pagination = new Pagination.Impl();
-        private Map<String, SlotIterator> iterators = new HashMap<>();
-        private Map<String, Object> properties = new HashMap<>();
+        private final Pagination pagination = new Pagination.Impl();
+        private final Map<String, SlotIterator> iterators = new HashMap<>();
+        private final Map<String, Object> properties = new HashMap<>();
 
         public Impl(SmartInventory inv, UUID player) {
             this.inv = inv;
@@ -116,7 +116,7 @@ public interface InventoryContents {
         public Optional<SlotPos> firstEmpty() {
             for (int row = 0; row < contents.length; row++) {
                 for(int column = 0; column < contents[0].length; column++) {
-                    if(!this.get(row, column).isPresent())
+                    if(this.get(row, column).isEmpty())
                         return Optional.of(new SlotPos(row, column));
                 }
             }
@@ -246,6 +246,7 @@ public interface InventoryContents {
             if(!inv.getManager().getOpenedPlayers(inv).contains(currentPlayer))
                 return;
 
+            assert currentPlayer != null;
             Inventory topInventory = currentPlayer.getOpenInventory().getTopInventory();
             topInventory.setItem(inv.getColumns() * row + column, item);
         }
