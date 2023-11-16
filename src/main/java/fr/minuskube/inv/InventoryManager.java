@@ -61,7 +61,7 @@ public class InventoryManager {
     public void init() {
         pluginManager.registerEvents(new InvListener(), plugin);
 
-        new InvTask().runTaskTimer(plugin, 1, 1);
+        new InvTask().runTaskTimer(plugin, 20, 20);
     }
 
     public Optional<InventoryOpener> findOpener(InventoryType type) {
@@ -119,12 +119,6 @@ public class InventoryManager {
         inventory.close(player);
 
         Bukkit.getLogger().log(Level.SEVERE, "Error while opening SmartInventory:", exception);
-    }
-
-    public void handleInventoryUpdateError(SmartInventory inventory, Player player, Exception exception) {
-        inventory.close(player);
-
-        Bukkit.getLogger().log(Level.SEVERE, "Error while updating SmartInventory:", exception);
     }
 
     @SuppressWarnings("unchecked")
@@ -270,13 +264,12 @@ public class InventoryManager {
 
         @Override
         public void run() {
-            new HashMap<>(inventories).forEach((uuid, inv) -> {
+            inventories.forEach((uuid, smartInventory) -> {
                 Player player = Bukkit.getPlayer(uuid);
+                assert player != null;
 
-                try {
-                    inv.getProvider().update(player, contents.get(uuid));
-                } catch (Exception e) {
-                    handleInventoryUpdateError(inv, player, e);
+                if (player.getOpenInventory().title().contains(smartInventory.getTitle())) {
+                    smartInventory.getProvider().update(player, contents.get(uuid));
                 }
             });
         }
