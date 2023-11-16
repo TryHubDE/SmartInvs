@@ -1,6 +1,9 @@
 name: SmartInvs
-version: 1.2.7
+version: 1.3.0
 description: Inventory API for your Bukkit Plugins.
-author: MinusKube
-website: https://github.com/MinusKube/SmartInvs
+authors:
+  - MinusKube
+  - MrManHD
+api-version: 1.19
+website: https://github.com/TryHubDE/SmartInvs
 main: fr.minuskube.inv.SmartInvsPlugin
