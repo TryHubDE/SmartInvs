@@ -61,5 +61,5 @@ repositories {
 
 ```groovy
 dependencies {
-    compileOnly 'world.avionik:smart-invsr:1.3.1'
+    compileOnly 'world.avionik:smart-invs:1.3.1'
 }
