@@ -21,7 +21,16 @@ public class SpecialInventoryOpener implements InventoryOpener {
             InventoryType.BREWING,
             InventoryType.ANVIL,
             InventoryType.BEACON,
-            InventoryType.HOPPER
+            InventoryType.HOPPER,
+            InventoryType.STONECUTTER,
+            InventoryType.GRINDSTONE,
+            InventoryType.CARTOGRAPHY,
+            InventoryType.SMOKER,
+            InventoryType.LOOM,
+            InventoryType.BLAST_FURNACE,
+            InventoryType.BARREL,
+            InventoryType.LECTERN,
+            InventoryType.SHULKER_BOX
     );
 
     @Override
