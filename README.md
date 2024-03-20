@@ -33,15 +33,6 @@ To use the SmartInvs API, either:
 
 ### Maven
 ```xml
-<repositories>
-  <repository>
-     <id>github</id>
-     <url>https://maven.pkg.github.com/avionik-world/SmartInvs</url>
-   </repository>
-</repositories>
-```
-
-```xml
 <dependencies>
  <dependency>
     <groupId>world.avionik</groupId>
@@ -54,12 +45,6 @@ To use the SmartInvs API, either:
 
 ### Gradle
 ```groovy
-repositories {
-    maven { url = 'https://maven.pkg.github.com/avionik-world/SmartInvs' }
-}
-```
-
-```groovy
 dependencies {
-    compileOnly 'world.avionik:smart-invsr:1.3.1'
+    compileOnly 'world.avionik:smart-invs:1.3.1'
 }
